@@ -11,6 +11,8 @@
     <!---- CSS ---->
     <link rel="stylesheet" href="{% static 'global/css/uikit.min.css' %}" />
     <link rel="stylesheet" href="{% static 'global/css/style.css' %}" />
+    {% block css_extra %}
+    {% endblock %}
     <!---- JS ---->
     <script src="{% static 'global/js/uikit.min.js' %}"></script>
     <script src="{% static 'global/js/uikit-icons.min.js' %}"></script>
@@ -22,7 +24,7 @@
         {% endblock %}
         <hr>
         <div>
-            Version 1.0
+            Version 1.1
         </div>
     </div>
 </body>

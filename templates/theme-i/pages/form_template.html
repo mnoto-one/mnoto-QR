@@ -1,6 +1,15 @@
 {% extends 'theme-i/base.html' %}
 {% block title %}QR Generated{% endblock %}
-
+{% block css_extra %}
+<style>
+  input[type="text"]{
+    height: 25px;
+    border-radius: 6px;
+    border: 1px solid gray;
+    margin-bottom: 10px;
+  }
+</style>
+{% endblock %}
 {% block content %}
 <h1>QR Code</h1>
 <form method="post" enctype="multipart/form-data">

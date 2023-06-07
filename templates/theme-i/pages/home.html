@@ -3,5 +3,5 @@
 
 {% block content %}
 <h1>Home Page</h1>
-<img src="{% url 'website:generate-qr-code' %}">
+<a class="uk-button uk-button-default" href="{% url 'website:generate_qr' %}">QR Code Generator</a>
 {% endblock %}

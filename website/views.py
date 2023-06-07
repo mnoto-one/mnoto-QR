@@ -55,7 +55,7 @@ def generate_qr_with_logo(request):
             QRimg.paste(logo, pos)
              
             # save the QR code generated
-            QRimg.save('/home/sootyad/www/mnoto-QR/media')
+            QRimg.save('media/qr_code.png')
              
             print('QR code generated!')
 

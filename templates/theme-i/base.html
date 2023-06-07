@@ -1,0 +1,22 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <!---- CSS ---->
+    <link rel="stylesheet" href="{% static 'global/css/uikit.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'global/css/style.css' %}"/>
+    <!---- JS ---->
+    <script src="{% static 'global/js/uikit.min.js' %}"></script>
+    <script src="{% static 'global/js/uikit-icons.min.js' %}"></script>
+</head>
+<body>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

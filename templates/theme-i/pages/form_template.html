@@ -1,0 +1,23 @@
+{% extends 'theme-i/base.html' %}
+{% block title %}QR Generated{% endblock %}
+
+{% block content %}
+<h1>QR Code</h1>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {% for field in form %}
+  <div class="fieldWrapper">
+    {{ field.errors }}
+    {{ field.label_tag }}
+    <br>
+    {{ field }}
+    <br>
+    {% if field.help_text %}
+    <p class="help">{{ field.help_text|safe }}</p>
+    {% endif %}
+  </div>
+  {% endfor %}
+  <br>
+  <button class="uk-button uk-button-secondary" type="submit">Generate QR Code</button>
+</form>
+{% endblock %}

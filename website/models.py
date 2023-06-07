@@ -1,3 +1,5 @@
 from django.db import models
 
-# Create your models here.
+class FormData(models.Model):
+    text_input = models.CharField(max_length=100)
+    logo = models.ImageField(upload_to='logos/')

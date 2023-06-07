@@ -1,6 +1,5 @@
 import qrcode
 from PIL import Image
-from pathlib import Path
 from django.shortcuts import render, redirect
 from .forms import FormDataForm
 
@@ -56,8 +55,7 @@ def generate_qr_with_logo(request):
             QRimg.paste(logo, pos)
              
             # save the QR code generated
-            save_path = Path('media/qr_code.png')
-            QRimg.save(save_path)
+            QRimg.save('/home/sootyad/www/mnoto-QR/media')
              
             print('QR code generated!')
 

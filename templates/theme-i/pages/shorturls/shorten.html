@@ -1,0 +1,38 @@
+{% extends 'theme-i/base.html' %}
+{% block title %}Short url{% endblock %}
+
+{% block css_extra %}
+<style>
+  input[type="url"]{
+    height: 25px;
+    border-radius: 6px;
+    border: 1px solid gray;
+    margin-bottom: 10px;
+  }
+</style>
+{% endblock %}
+
+
+
+
+{% block content %}
+
+<h1>Short url</h1>
+{% if short_url %}
+<p>Short URL: 
+     
+  <a href="{% url 'short_urls:redirect' short_code=short_url.short_code %}">
+        {{ request.build_absolute_uri|safe }}{{ short_url.short_code }}
+    </a>
+  </p>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    <label for="id_text_input">Url input:</label>
+    <br>
+    <input type="url" name="long_url" placeholder="Enter a long URL" required>
+    <br>
+    <button class="uk-button uk-button-secondary" type="submit">Shorten</button>
+</form>
+{% endblock %}

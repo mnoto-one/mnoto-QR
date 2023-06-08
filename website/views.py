@@ -1,6 +1,7 @@
 import qrcode
+import datetime
 from PIL import Image
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .forms import FormDataForm
 
 # Create your views here.
@@ -8,11 +9,7 @@ def home_view(request):
     return render(request, 'theme-i/pages/home.html') 
 
 
-def qr_code_generated(request):
-    return render(request, 'theme-i/pages/qr_code_generated.html')
-
-
-def generate_qr_with_logo(request):
+def generate_qr(request):
     if request.method == 'POST':
         form = FormDataForm(request.POST, request.FILES)
         if form.is_valid():
@@ -23,7 +20,7 @@ def generate_qr_with_logo(request):
             logo = Image.open(Logo_link)
  
             # taking base width
-            basewidth = 80
+            basewidth = 100
              
             # adjust image size
             wpercent = (basewidth/float(logo.size[0]))
@@ -53,13 +50,15 @@ def generate_qr_with_logo(request):
             pos = ((QRimg.size[0] - logo.size[0]) // 2,
                    (QRimg.size[1] - logo.size[1]) // 2)
             QRimg.paste(logo, pos)
-             
-            # save the QR code generated
-            QRimg.save('media/qr_code.png')
+            timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+            filename = f"media/qr_code_{timestamp}.png"
+            QRimg.save(filename)
              
             print('QR code generated!')
-
-            return redirect('website:qr_code_generated')
+            context = {
+                'filename' : filename,
+            }
+            return render(request, 'theme-i/pages/qr_code_generated.html', context=context)
 
     else:
         form = FormDataForm()
